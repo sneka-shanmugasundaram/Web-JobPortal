@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+
+{% block content %}
+</center>
+<div class="card" style="width:500px; margin-top:50px; margin-left:450px;">
+    
+    <div class="reg">
+    
+        <form method="post">
+            <h2>Registration</h2>
+            {% csrf_token %}
+            <table>
+                <tr>
+                  <td>{{form.username}}</td>
+                </tr>
+                    {% if form.username.errors %}
+                        <p>{{form.username.errors.as_text}}</p>
+                    {% endif %}
+            
+                    <tr>
+                            
+                        <td>{{form.email}}</td>
+                    </tr>
+                    {% if form.email.errors %}
+                        <p>{{form.email.errors.as_text}}</p>
+                    {% endif %}
+            
+
+                           
+                        <tr>
+                            
+                            <td>{{form.password1}}</td>
+                        </tr>
+                        {% if form.password1.errors %}
+                            <p>{{form.password1.errors.as_text}}</p>
+                        {% endif %}
+                        <tr>
+                            
+                            <td>{{form.password2}}</td>
+                        </tr>
+                        {% if form.password2.errors %}
+                            <p>{{form.password2.errors.as_text}}</p>
+                        {% endif %}
+            </table>
+        </div>
+
+
+    <br>
+            <button type="submit"class="btn btn-lg btn-primary" style="width:200px;margin-left:120px;"> Register </button><br>
+                
+            <a href={% url "jobs_home" %} title="Cancel"><button type="submit"class="btn btn-lg btn-primary" style="width:200px;margin-left:120px;">Cancel</button></a>
+        </form>
+
+<center>
+        <p style="margin-left:160px;margin-top:20px; text-decoration:none;">Click Here <a href="{% url "login" %}"title="Login" >login</a></p>
+    </div>
+</center>
+    </div>
+
+<style>
+    /**{
+        margin: 0px;
+        padding: 0px;
+    }*/
+        
+     .reg{
+        margin-left:50px;
+     }
+    
+   
+    
+    p{
+        text-align:justify ;
+        text-decoration:underline ;
+    }
+    a{
+       text-decoration: none; 
+       
+       font-weight: bold;
+    }
+    
+    
+    body{
+        background-color: white;
+    }
+    button :hover{
+        
+        color: gold;
+    }
+    input{
+        height:50px;
+        width:350px;
+        margin-top:10px;
+        border-radius:10px;
+    }
+</style> 
+
+
+{% endblock content %}

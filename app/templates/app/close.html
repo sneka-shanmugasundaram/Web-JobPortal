@@ -1,0 +1,59 @@
+{% extends 'abc.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+{% block content %}
+        <center>
+        <div class='card'style="height:260px; width:550px;margin-top:120px;box-shadow:#00308F 3px 4px 2px 2px;">
+            
+            <form action="" method="POST" name="myForm" onsubmit="return submitForm()"enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <table>
+                    <tr>
+                        <td>{{form.as_p}}</td><br><br>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <td>
+                            <input type="submit"  value="Submit" target="_blank" class="btn btn-primary mt-3"style="margin-top:50px;height:40px;weight:50px;margin-bottom:30px;width:100px;">
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        <script>
+            function submitForm() {
+                      let x = document.forms["myForm"]["status"].value;
+                      if (x != "closed") {
+                        alert("Jobpost Active")
+                        return True;
+                      }
+                      else {
+                        // The file is not allowed, show an error message
+                        alert("Jobpost Closed");
+                      }
+                    }
+
+        </script>
+    </form>
+</div>
+</center>
+    
+        <style>
+            label{
+                font-weight:bolder;
+                font-size:20px;
+            }
+            input{
+                height:50px;
+                width:450px;
+                font-size:25px;
+                margin-top:13px;
+                border-radius:1px;
+                box-shadow:gray 1px 1px 2px 2px;
+            }
+           
+            
+            
+           
+        </style>
+        {% endblock content %} 
+ 

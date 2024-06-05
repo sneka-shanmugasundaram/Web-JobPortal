@@ -1,0 +1,35 @@
+{% extends 'tip.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+{% block content %}
+        <center><h4>To save your jobpost application in the folder</h4></center>
+            
+            <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <table>
+                    <tr>
+                        <td>{{form.as_p}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" class="btn btn-primary mt-3"style="margin-top:50px;height:40px;weight:50px;margin-bottom:30px;">
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </form>
+        <style>
+            input{
+                height:50px;
+                width:450px;
+                margin-top:13px;
+                border-radius:1px;
+                box-shadow:gray 1px 1px 2px 2px;
+            }
+           
+            
+            
+           
+        </style>
+        {% endblock content %} 
+ 

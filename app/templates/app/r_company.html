@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+
+{% block content %}
+    <center>
+        <h1>Company Registration</h1>
+   
+            
+            <!--<form action="" method="POST" enctype="multipart/form-data">
+                
+            {% csrf_token %}
+            <center>
+                <table>
+                    <tr>
+                        <td>{{forms.as_p}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{forms.as_p}}</td>
+                    </tr>
+                    
+        </table>
+
+        <button type="submit">Register</button>        
+        <button type="submit"><a href="{% url "jobs_home" %}" title="Cancel">Cancel</button></a>
+
+       
+
+    <center>
+    <p style="margin-left:690px">Click Here <a href="{% url "l_company" %}"title="login">login</a></p> 
+    </center>
+    </div> 
+</center>
+    
+   <style>
+    /**{
+        margin: 0px;
+        padding: 0px;
+    }*/
+    
+    
+    h2{
+        margin: 50px 450px 10px 450px;
+        font-weight: bolder;
+        font-size: larger;
+        letter-spacing: 10pt;
+    }
+    div {
+        background-color:white;
+        font-size: larger;
+        height: 380px;
+        width: 450px;
+        margin: 50px 450px 50px 350px;
+        padding-left: 55px;
+        padding-top: 10px;
+        text-indent: 100px;
+        line-height: 30px;
+        border-radius: 10pt;
+
+        
+    }
+    button{
+        background-color: white;
+        height: 50px;
+        width: 200px;
+        font-weight: bold;
+        font-size: larger;
+        border: 2px double blue;
+        margin-top: 10px;
+        margin-left: 100px;
+        line-height: 30px;
+        border-radius: 10px;
+        
+        
+    }
+    a{
+       text-decoration: none; 
+       
+       font-weight: bold;
+    }
+    p{
+        text-align:justify ;
+    }
+    
+    
+    body{
+        background-color: white;
+    }
+    button :hover{
+      
+       color: gold;
+    }
+    input{
+        height:35px;
+        width:350px;
+        padding-left:145px;
+        margin-left:35px;
+        margin-bottom:20px;
+    }
+    </style>
+
+
+-->
+
+
+<form class="container mt-4" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <center>
+ 
+    <div class="row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="username" id="username" placeholder="  UserName" required>
+            {% if company.username.errors %}
+                        <p>{{company.username.errors.as_text}}</p>
+                    {% endif %}
+            
+        </div><br>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="name" id="name" placeholder="   Enter Your Name" required>
+            {% if company.name.errors %}
+                        <p>{{company.name.errors.as_text}}</p>
+                    {% endif %}
+            
+        </div><br><br><br>
+        <div class="form-group col-md-6">
+
+            <input type="text" class="form-control" name="company_name" id="company_name" placeholder=" Company Name" required>
+        </div>
+    </div>
+ 
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            
+            <input type="email" class="form-control" name="email" id="email" placeholder=" Email" required>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            
+            <input type="text" class="form-control" name="Street" id="Street" placeholder=" Street",required>
+        </div>
+        <div class="form-group col-md-6">
+    
+            <input type="text" class="form-control" name="City" id="City" placeholder=" City" required>
+        </div>
+    </div>
+ 
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+           
+            <input type="text" class="form-control" name="State" id="State" placeholder=" State" required>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                
+                <input type="Number" class="form-control" name="Pincode" id="Pincode" placeholder=" Pincode" required>
+            </div>
+        <div class="form-group col-md-6">
+            
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder=" Contact Number" required>
+        </div>
+    </div>
+ 
+        <div class="form-group col-md-6">
+            <br>
+            <input type="text" class="form-control" name="indus" id="indus" placeholder=" Type Of Industry" required>
+        </div>
+    </div>
+ 
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+    
+            <input type="text" class="form-control" name="emp" id="emp" placeholder=" Number Of Employees"required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+           
+            <input type="text" class="form-control" name="Website" id="Website" placeholder=" Website" required>
+        </div>
+    </div>
+    </div>
+    <br>
+<input type="submit" value="Submit" class="btn" style="background-color: #4f868c; color: white; font-size: larger; width: 8rem;">
+</form>
+</center>
+
+
+
+        
+    
+{% endblock content %}

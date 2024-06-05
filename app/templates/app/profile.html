@@ -1,0 +1,56 @@
+{% extends 'tip.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+{% block content %}
+        <h1>Create Profile</h1>
+        <script>
+            function validateForm_ch() {
+              let x = document.getElementById("id_phone_number").value;
+              let z = x.slice(0,1)
+              let xy = x.length;
+              if (z != 6 || z != 7)||(z != 8 || z != 9 ) {
+                alert("Enter valid valid phone number!!")
+                return False;
+              }
+              else if (xy == 10){
+                alert("Enter valid valid phone number!!")
+                return False;
+            }
+            }
+            </script>
+   
+            
+            <form action="" method="post" onsubmit="return validateForm_ch()" enctype="multipart/form-data">
+                
+            {% csrf_token %}
+            <center>
+                <table>
+                    <tr>
+                        <td>{{forms.as_p}}</td>
+                    </tr>
+        
+                </table>
+                
+                <input type="submit" value="Submit" class="btn btn-primary mt-3"style="margin-top:50px;height:40px;weight:50px;margin-bottom:30px;">
+        
+    
+    </center>
+</form>
+
+<style>
+    input{
+        height:50px;
+        width:450px;
+        margin-top:13px;
+        border-radius:1px;
+        box-shadow:gray 1px 1px 2px 2px;
+    }
+   
+
+.edu{
+   
+}
+    
+</style>
+ 
+
+{% endblock content %} 

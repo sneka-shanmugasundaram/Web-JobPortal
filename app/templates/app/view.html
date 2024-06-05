@@ -1,0 +1,168 @@
+{% extends 'sample.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+
+{% block content %}
+{%load static%}
+{% if user.is_authenticated %}
+{% if user != job.company.user %}
+<a href={% url "jobs" %} style="float:left; margin-top:200px;"><img src={% static "next button.jpg" %} alt="logo" width="90px"></a>
+
+<a  href={% url 'apply' job.id %} type="submit" style="float:right; margin-top:200px;"><img src={% static "button.jpg" %} alt="logo" width="90px"></a>
+{% endif %}
+{% else %}
+<script>
+  function myfunc(){
+    alert("login first...!")
+  }
+</script>
+<a  href={% url 'login' %} type="submit" onclick="myfunc()" style="float:right; margin-top:200px;"><img src={% static "button.jpg" %} alt="logo" width="90px"></a>
+{% endif %}
+<div class="card" style="height:auto;width:1000px;margin-bottom:160px;padding-top:20px; padding-right:50px;border-radius:10px; margin-top:40px; margin-left:200px;background-color:white;box-shadow:#00308F 3px 4px 2px 2px;padding-left:40px; ">
+    <div class="view-post">
+        <h1 class="jobtitle">
+          {{job.title}}
+        </h1>
+        <p style="font-size:21px;color:#00308F;font-weight:bold;margin-top:-10px;">{{job.c_name}}</p>
+        <img src="{{job.image.url}}" alt="logo" width="180px" style="float:right; margin-right:20px;">
+        <div class="detail" style="font-size: 20px;
+        font-weight: bold;
+        color: rgb(43, 43, 245);">
+        <p class="location it">Location: <span style="font-size: 20px;
+            font-weight: bold;
+            color: black;">{{job.location.city}}</span></p>
+        <p class="status it">Type: <span style="font-size: 20px;
+            font-weight: bold;
+            color: black;">{{job.type}}</span></p>
+        <p class="budget it">Salary: <span style="font-size: 20px;
+            font-weight: bold;
+            color: black;">{{job.salary}}</span></p>
+
+        <p class="budget it">Skill: <span style="font-size: 20px;
+            font-weight: bold;
+            color: black;">{% for i  in skill %}
+            {{forloop.counter}}.{{i}}
+            {% endfor %}</span></p>
+        <p> Date :<span style="font-size: 20px;
+          font-weight: bold;
+          color: black;">{{job.date.date}} -{{job.expiry}}</span></p>
+        </div>
+
+        <div class="desc">
+          <p class="details">
+          {{job.description|linebreaksbr }}</p>
+
+          {% if user.is_authenticated %}
+              
+                 {% comment %} {% if job.id in data %}
+                  <button class="btn btn-success " style="float:right;"><a  href={% url 'jobs' %} type="submit" style="text-decoration: none; font-size: medium; font-weight: bold;color:white;">Applied</a></button>
+                 {% else %} {% endcomment %}
+
+                 {% if user != job.company.user %}
+                 <button class="btn btn-primary" style="float:right;margin-top:10px;margin-bottom:5px;"><a  href="{% url 'apply' job.id %}" type="submit"   style="text-decoration: none; font-size: medium; font-weight: bold; color:white;">Apply</a></button>
+                 {% comment %} {% endif  %}    {% endcomment %}
+                 {% else %}
+                 {% load static %}
+                 {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"><a  href="{% url 'close' job.id %}" type="submit"target="iframe_a" style="text-decoration: none; font-size: medium; font-weight: bold; color:white;">close</a> {% endcomment %}
+                  <button type="button" class="btn btn-primary"style="margin-bottom:10px;"><a href="{% url 'close' job.id %}" target="iframe_a" style="color:white;text-decoration:none;font-weight:bold">Close</a></button>
+                </button>
+             
+              
+                
+                      
+                
+                
+                {% endif %}
+          {% else %}      
+          <script>
+            function myfunc(){
+              alert("login first...!")
+            }
+          </script>
+          <button class="btn btn-primary"onclick="myfunc()" style="float:right;margin-top:10px;margin-bottom:5px;"><a  href="{% url 'login' %}" type="submit" style="text-decoration: none; font-size: medium; font-weight: bold; color:white;">Apply</a></button>
+          {% endif %}
+          {% comment %} {% if not user.is_authenticated %}
+          
+
+               
+          <script>
+            function myfunc(){
+              alert("login first...!")
+            }
+          </script>
+          <button class="btn btn-primary"onclick="myfunc()" style="float:right;margin-top:10px;margin-bottom:5px;"><a  href="{% url 'login' %}" type="submit" style="text-decoration: none; font-size: medium; font-weight: bold; color:white;">Apply</a></button>
+          {% endif %} {% endcomment %}
+
+        </div>
+                
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+
+
+    {% endblock content %}
+<style>
+  /**{
+       margin: 0px;
+       padding: 0px;
+   }*/
+  body{
+    background-color:white;
+    height: 200px;
+    width: 1340px;
+  }
+  .view-post{
+    border: 2px double green;
+    padding-top: 20px;
+    padding-left: 70px;
+    margin-top: 70px;
+    height: 250px;
+    width: 650px;
+    margin-left:300px;
+    padding-bottom:70px;
+    padding-right:70px;
+  }
+  .detail{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(43, 43, 245);
+  }
+  span{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  .desc{
+    text-align: justify;
+    margin-top: 30px;
+  }
+  button{
+    background-color: white;
+    height: 30px;
+    width: 150px;
+    border: 2px double black;
+    border-radius: 20px;
+    float: right;
+   a{
+    text-decoration: none;
+   }
+  }
+  button:hover{
+    background-color: rgb(14, 14, 75);
+  }
+ 
+</style>
+   
+
+    

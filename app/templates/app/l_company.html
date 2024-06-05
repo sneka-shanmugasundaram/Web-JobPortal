@@ -1,0 +1,97 @@
+{% extends 'base1.html' %}
+{% block title %}FlixCareers | {{job.title}}{% endblock title %}
+
+{% block content %}
+         <!--<nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <h3>TECH</h3>
+                <img src="lotus_logo.jpg" width="30px" height="30px">
+              TECH
+            </a>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul>
+                
+              </nav>
+          </nav>-->
+
+       <!--  <h1>TECH</h1>
+        
+            
+               <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <table>
+                    <tr>
+                        <td>{{form.as_p}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+            <input type="submit" value="submit">
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </form>
+        <center>
+        <p>New user <a href="{% url "r_company" %}">register here </a></p>
+        </center> -->
+        <style>
+            input{
+                
+                margin-bottom:20px;
+                margin-top:20px;
+                border-radius:7px;
+            }
+            
+            
+           
+        </style>
+     
+    <center>
+        
+    <form method="POST" autocomplete="off"> 
+        {% csrf_token %}
+        <div class="container mt-5" style="margin-top:100px;">
+
+     
+            <div class="mb-3">
+               <label for="username" class="form-label"><i style=" font-size:20px">Username</i></label><br>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username"style="width:500px;height:50px;">
+            </div>
+            <div class="mb-3">
+               <label for="password" class="form-label"><i style="font-size:20px">Password</i></label><br>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"style="width:500px;height:50px;">
+            </div>
+            <br>
+            <br>
+        </div>
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p>{{error}}</p>
+                
+                {% endfor %}
+            {% endif %}
+            <input type="submit" value="Submit" class="btn" style="background-color: #4f868c; color: white; font-size: larger; width: 8rem;"><br><br>
+   
+            <a href="{% url "password_reset" %}">forgot password</a>
+            <br>
+            <br>
+            <p style="font-size:20px;margin-top:0px;">Haven't register yet, then click here <a href="{% url 'r_company' %}" type="submit" class="btn" style="background-color: #4f868c; color: white;font-size:20px">Signup</a></p>
+    </form>
+</center>
+
+
+{% endblock content %}

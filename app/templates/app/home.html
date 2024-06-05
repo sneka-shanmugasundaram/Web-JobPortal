@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="lotus_logo.jpg" ref="stylesheet
+    ">
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <div class="container" style="background-color:black;">
+    <div class="123">
+
+    <nav>
+        <h1 style="text-spacing:20px;color:white;">TECH</h1>
+        <div class="log">
+            <a href="#" style="color:white;">Login</a>
+                <div class="login">
+                    <a href="admin/">Admin</a>
+                    <a href="{% url 'l_company'%}">Company</a>
+                    <a href="{% url "login" %}">User</a>
+                </div>
+
+        </div>
+        <div class="Reg">
+            <a href="#" style="color:white;">Register</a>
+                <div class="abc">
+                    <a href={% url "r_company" %} style="font-size:20px;">Company</a><br>
+                    <a href={% url "register" %} style="font-size:20px;">User</a>
+                </div>
+
+        </div>
+        <a href={% url "jobs" %} style="font-size: 30px; float:right;margin:auto; margin-right: 720px; margin-top: -45px; color:white">Jobs/</a>
+        <a href="{% url "l_company" %}" style="font-size: 30px; float:right;margin:auto; margin-right: 650px; margin-top: -45px;color:white; ">Post</a>    
+         
+        
+        
+        
+    </nav>
+</div>
+</div>
+
+    <p>Welcome To TECH</p>
+    
+        <marquee behavior="scroll" direction="left" >
+            {% load static %}
+            <img src="{% static 'e gif.gif' %}" alt="My image" height="100px">
+            “Knowledge is a Treasure, But Practice is the Key to it.”
+        </marquee>
+   
+    <footer style="background-color:black;margin-top:200px; ">
+        <div class="a" style="line-height: 20px; font-weight: bold; padding: 20px;">
+        <strong style="padding-left: 40px ; padding-bottom:10px;color:white;">About</strong><br>
+        <strong style="color:white;">
+            55,2nd Floor, 
+            NSR Rd,  <br>
+            near by Indian Bank, <br>
+            Kuppakonam Pudur, <br>
+            Coimbatore,<br>
+            Tamil Nadu 641011
+        </strong>
+            <strong style="padding-left: 40px ;float: right;margin-top: -90px;margin-right: 600px; color:white;">Contact Us</strong>
+            <strong style="padding-left: 400px ;float: right;margin-top: -70px;margin-right: 500px; color:white;">
+                8428-983-975
+                <br>
+                <br>
+                support@techvoltcoimbatore.com
+            </strong>
+                
+            </div>
+            
+    
+    </footer>
+    <style>
+        *{ 
+            margin: 0px;
+            padding: 0px;
+        }
+        nav{ 
+            background-color:rgp(154, 231, 255);
+            display: inline-block;
+            width: 1355px;
+            color:black;
+            margin-top:30px;
+
+        }
+        a{
+            margin: 10px auto;
+            height: 20px;
+            width: 20px;
+            text-decoration: none;
+            color:black;
+            font-weight: bold;
+        }
+        .log{
+            float:right;
+            margin-right: 30px;
+            font-size: 25px ;
+            margin-top: -32px;
+        }
+        .Reg{
+            float: right;
+            margin-right: 150px;
+            font-size:25px;
+            margin-top:-32px;
+            
+        }
+        .login{
+            display: none;
+            font-size: large;
+            font-size:20px;
+        }
+        .abc{
+            display: none;
+            font-size: large;
+        }
+        .log:hover .login{
+            display: block;
+            position: absolute;
+        }
+        .Reg:hover .abc{
+            display:block;
+            position: absolute;
+        }
+        
+        
+        
+        
+        .123{
+            background-color:black;
+            color:white;
+        }
+        
+        
+
+        
+        P{
+            background-color: #F0F8FF;
+            height: 250px;
+            width: 1350px;
+            font-size: 100px;
+            font-weight: bolder;
+            color: black;
+            text-align: center;
+            padding-top: 170px;
+            
+
+        }
+        body{
+            background-color:#F0F8FF;
+        }
+    
+    marquee{
+        background-color:#F0F8FF;
+        font-weight: bold;
+        font-size: x-large;
+        
+
+    }
+</style>
+    
+</body>
+</html>

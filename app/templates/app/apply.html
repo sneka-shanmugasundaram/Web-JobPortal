@@ -1,0 +1,110 @@
+
+{% extends 'base.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+
+    
+    
+
+{% block content %}
+   <!--<div class="apply">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input  class="submit" type="submit" value="submit">
+    </form>
+    
+
+</div>
+</body>
+<style>
+   .apply{
+        margin:10px auto;
+        margin-left: 350px;
+        border: 3px solid green;
+        border-radius: 20px ;
+        margin-right: 300px;
+        background-color: white;
+        padding-left: 180px;
+        box-shadow: 10px 10px gray;
+        margin-top: 60px;
+        font-size: 25px;
+        padding-bottom: 50px;
+        
+
+    }
+    input{
+        background-color: white;
+        height: 30px;
+        width: 300px;
+        border: 2px double black;
+        border-radius: 5px;
+    
+    }
+    .submit{
+        background-color: white;
+        height: 30px;
+        width: 150px;
+        border: 2px double black;
+        border-radius: 20px;
+        font-size:20x;
+        font-weight:bold;
+        color:black;
+        padding-left;30px;
+    }
+</style>-->
+<script>
+    function validateForm() {
+      let x = document.forms["myForm"]["resume"].value;
+      if (x != "") {
+        alert(" Successfully Upload!!!")
+        return True;
+      }
+    }
+    </script>
+
+    <script>
+        function uploadFile() {
+          // Get the file input element
+          var fileInput = document.getElementById('resume');
+    
+          // Get the selected file
+          var file = fileInput.files[0];
+    
+          // Check if a file is selected
+          if (file) {
+            // Get the file extension
+            var fileExtension = file.name.split('.').pop().toLowerCase();
+    
+            // Check if the file extension is allowed (doc or pdf)
+            if (fileExtension === 'doc' || fileExtension === 'pdf') {
+              // The file is allowed, you can proceed with the upload logic here
+              console.log('File is allowed. You can proceed with the upload.');
+            } else {
+              // The file is not allowed, show an error message
+              alert('Invalid file format. Please choose a DOC or PDF file.');
+            }
+          } else {
+            // No file selected, show an error message
+            alert('Please choose a file.');
+          }
+        }
+      </script>
+<div style="margin-top:200px;">
+<center>
+    <div class="container mt-4 shadow-lg py-3 mb-4"style="margin-top:170px;">
+    <form method="post" enctype="multipart/form-data"name="myForm" onsubmit="return validateForm()"> {% csrf_token %}
+        <div class="form-row"style="font-weight:bolder;font-size:30px;">
+            <label>Upload Resume</label>
+            <input type="file" class="form-control mt-3" name="resume" id="resume"accept=".doc, .docx, .pdf" required>
+        </div>
+        <input type="submit" value="Submit"onclick="uploadFile()" class="btn btn-primary mt-3"style="margin-top:50px;height:30px;width:100px;text-align:center">
+               
+      </form>
+    </div>
+</center>
+</div>
+    
+            
+
+{% endblock content %}
+

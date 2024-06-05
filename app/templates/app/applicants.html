@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>{% block title %}TECH{% endblock title %}</title>
+  </head>
+  <body>
+
+
+
+<div style="background-color:black;width:180px;height:650px;color:white;">
+  <ul class="nav flex-column" style="margin-bottom:20px;color:white; font-size:20px;"> 
+      <li class="nav-item"style="padding-left:15px;padding-top:10px;">
+          <a href="{% url "jobs_home" %}" style="margin-right:1140px;text-decoration:none;color:white;"><h3>TECH</h3></a>
+      </li>
+      <li class="nav-item"style="padding-left:15px;padding-top:10px;">
+          <p>Hello {{user.username}} !!!</p>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" class="Reg" href="{% url "all_applicants" %}">All Applicants</a>
+        <div class="abc">
+          {% comment %} <a href={% url "r_company" %} style="font-size:20px;">Company</a><br>
+          <a href={% url "register" %} style="font-size:20px;">User</a>
+      </div> {% endcomment %}
+
+      </li><br>
+      <li class="nav-item" style="padding-bottom:370px;">
+        <a class="nav-link" href="{% url "post" %}">Post</a>
+      </li>
+      <li  style="text-decoration:none;margin-top:-300px;padding-left:15px;">{% if request.user.is_authenticated %}
+          <a  style="text-decoration:none;"  href="{% url 'logout' %}">Logout</a>
+        
+        {% else %}
+        <button type="button" class="btn btn-light">
+        <a style="text-decoration:none;"  href ="{% url 'login' %}">Login </a>  
+      </button>
+            {% endif  %}
+  </li>
+    </ul>
+  </div>
+<div class="container mt-4">
+    <table class="table table-bordered" id="example" style="margin-left:90px;margin-top:-665px;">
+        <thead>
+             <tr>
+                <th>S.No</th>
+                <th>Job Title</th>
+                <th>Applicant</th>
+                <th>Applied On</th>
+                <th>Resume</th>
+                
+              
+            </tr> 
+        </thead>
+        <tbody>
+            {% for i in application %}
+           
+            
+             <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.job}}</td>
+                <td>{{i.applicant}}</td>
+                <td>{{i.apply_date}}</td>
+                <td><a href='{{i.resume.url}}'><i class="fa fa-file">{{i.resume}}</i></a></td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    </div> 
+</body>
+</html>
+ 

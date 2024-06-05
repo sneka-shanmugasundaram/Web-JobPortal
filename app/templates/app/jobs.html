@@ -1,0 +1,212 @@
+{% extends 'sample.html' %}
+{% block title %}TECH | {{job.title}}{% endblock title %}
+    
+
+{% block content %}
+<div style="background-color:white;">    
+    <form>
+        <input name='quary' id= 'quary' type="search" placeholder="Job Title or Location" class="form-control"style="width:500px;height:50px;margin-top:50px;margin-left:380px;">
+        <button type="submit"class="btn btn-primary" style="margin-left:790px;margin-top:-75px;width:90px;height:50px;">search</button>
+    </form>
+
+ {% for job in jobs %}
+
+
+  
+  {% if job.roll == "ok" %}
+  {% if job.status == "active" %}
+
+  <div class="card" style="height:200px;width:1250px;margin-bottom:50px; padding:20px 20px 20px 20px;border-radius:10px; margin-top:40px; margin-left:60px;background-color:white;box-shadow:#00308F 3px 4px 2px 2px; ">
+<div class="job"> 
+  {% load static %}
+<img src="{{job.image.url}}" alt="logo" width="120px" style="float:right; margin-top:40px;">
+  <h3 class="job-title" style="margin-bottom:0px;">{{job.title}}</h3>
+  <p style="font-size:21px;color:#00308F;font-weight:bold;">{{job.c_name}}</p>
+  <div class="over">
+      </div>
+    <div class="Location" style="font-size:25px ;
+    color: rgb(43, 43, 245);">
+    <h4>Location :</h4>
+    <h3 class="abc" style="margin-left: 125px;margin-top:-35px;font-size:25px ;color:black;">{{job.location.city}}</h3></span>
+    
+    </div>
+
+    <div class="Salary" style="margin-left: 300px; 
+    margin-top: -35px;
+    font-size:25px ;
+    color: rgb(43, 43, 245);">
+    <h4>Salary :</h4>
+    <h3 class="bca" style="margin-left: 100px;
+    margin-top: -36px;
+    font-size: 25px;
+    color:black;">{{job.salary}}</h3>
+    </div>
+  
+    <div class="Schedule" style="margin-left: 600px; 
+    margin-top: -36px;
+    font-size:25px ;
+    color: rgb(43, 43, 245);">
+    <h4>Type :</h4>
+    <h3  class="cab" style="margin-left: 120px; 
+    margin-top: -37px;
+    font-size:25px ;
+    color:black;">{{job.type}}</h3>
+    </div>
+    <div>
+      <p style="font-weight:bold;margin-top:0px; margin-right:920px;"> Date :{{job.date.date}}</p>
+    </div>
+    
+    <button class="apply" style="background-color:blue;
+    height: 50px;
+    width: 150px;
+    margin-top:-94px;
+    margin-right:180px;
+    border: 2px double black;
+    border-radius: 20px;
+    text-decoration: none;
+    float: right;
+    margin-bottom:20px;">
+    <a href={% url 'view' job.id %} style=" text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;">View Job</a>
+    </button>
+  </div>
+  
+</div>
+</div>
+{% endif %}
+{% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock content %}
+<style>
+  *{
+    margin=0px
+    padding=0px
+  }
+     body{
+            background-color:red;
+            height: 640px;
+            width: 1340px;
+            margin: 0px auto;
+
+        }
+        .job{
+          background-color: white;
+          border:2px double green;
+          margin-top: 0px;
+          border-radius: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
+          text-align: justify;
+          box_shadow: 10px 10px gray;
+    
+        }
+        .Location{
+          font-size:25px ;
+          color: rgb(43, 43, 245);
+        }
+        .abc{
+          margin-left: 125px; 
+          margin-top: -60px;
+          font-size:25px ;
+          color:black;
+        }
+        .Salary{
+          margin-left: 300px; 
+          margin-top: -60px;
+          font-size:25px ;
+          color: rgb(43, 43, 245);
+          
+        }
+        .bca{
+          margin-left: 100px;
+          margin-top: -59px;
+          font-size: 25px;
+          color:black;
+        }
+        .Schedule{
+          margin-left: 600px; 
+          margin-top: -60px;
+          font-size:25px ;
+          color: rgb(43, 43, 245);
+        }
+        .cab{
+          margin-left: 120px; 
+          margin-top: -59px;
+          font-size:25px ;
+          color:black;
+        }
+        .asd{
+            background-color: white;
+            height: 50px;
+            width: 400px;
+            margin-left: 400px;
+            border: 2px double black;
+            border-radius: 20px;
+            text-indent:50px;
+        }
+        .dsa{
+            background-color: white;
+            height: 50px;
+            width: 300px;
+            border: 2px double black;
+            border-radius: 20px;
+        }
+        button{
+            background-color: white;
+            height: 50px;
+            width: 100px;
+            border: 2px double black;
+            border-radius: 20px;
+            margin-top: -70px;
+            margin-left:20px;
+          }
+          .apply{
+            background-color: white;
+            height: 50px;
+            width: 150px;
+            border: 2px double black;
+            border-radius: 20px;
+            text-decoration: none;
+            float: right;
+          }
+          a{
+            text-decoration: none;
+            color: blue;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .apply:hover{
+            background-color: rgb(14, 14, 75);
+            color:black;
+          }
+          .over{
+            padding-top: 20px;
+            margin-bottom: 20px;
+            margin-top: -30px;
+          }
+          .search{
+            margin-bottom: 40px;
+          }
+          .demo{
+            float:right;
+            margin-top:-50px;
+          }
+          .pro{
+            float:left;
+          }
+          .profile{
+            float:right;
+            margin-right:1110px;
+            margin-top:-60px;
+           
+          }
+          
+    </style>
+      
